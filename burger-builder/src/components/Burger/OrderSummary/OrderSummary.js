@@ -16,12 +16,16 @@ const orderSummary = props => {
     <Auxiliary>
       <h3>Your Order</h3>
       <p>Burger with the following ingredients:</p>
-      <ul>
-        {ingredientSummary}
-      </ul>
+      <ul>{ingredientSummary}</ul>
       <p>Continue to Checkout?</p>
-      <Button btnType="Danger" clicked={props.purchaseCanceled}>Cancel</Button>
-      <Button btnType="Success" clicked={props.purchaseContinue}>Continue</Button>
+      <Button
+        btnType="Danger"
+        clicked={props.purchaseCanceled}
+      >Cancel</Button>
+      <Button
+        btnType="Success"
+        clicked={props.purchaseContinue}
+      >Continue</Button>
     </Auxiliary>
   );
 };
