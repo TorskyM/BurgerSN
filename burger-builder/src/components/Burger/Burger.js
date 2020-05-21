@@ -1,16 +1,20 @@
-import React from "react";
+import React from 'react';
 
-import classes from "./Burger.module.scss";
-import BurgerIngredient from "./BurgerIngridient/BurgerIngridient";
+import classes from './Burger.module.scss';
+import BurgerIngredient from './BurgerIngridient/BurgerIngridient';
 
-const burger = (props) => {
+const burger = props => {
 	let transformedIngredients = Object.keys(props.ingredients)
 		.map(ingKey => [...Array(props.ingredients[ingKey])]
-			.map((_, i) => <BurgerIngredient key={ingKey + i} type={ingKey} />))
-				.reduce((arr, el) => arr.concat(el), []);
+			.map((_, i) =>
+			<BurgerIngredient
+				key={ingKey + i}
+				type={ingKey}
+			/>))
+		.reduce((arr, el) => arr.concat(el), []);
 
 		if(transformedIngredients.length === 0) {
-			transformedIngredients= <p>Please, add ingrediance</p>;
+			transformedIngredients = <p>Please, add ingrediance</p>;
 		}
 
   return (
