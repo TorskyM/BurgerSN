@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import Auxiliary from "../../hoc/Auxiliary";
 import classes from './Layout.module.scss'
+import Auxiliary from '../../hoc/Auxiliary';
 
 const layout = (props) => (
   <Auxiliary>
