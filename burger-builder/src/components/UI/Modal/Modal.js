@@ -1,21 +1,35 @@
-import React from "react";
+import React, { Component } from 'react';
 
-import classes from "./Modal.module.scss";
-import Auxiliary from "../../../hoc/Auxiliary";
-import Backdrop from "../Backdrop/Backdrop";
+import classes from './Modal.module.scss';
+import Auxiliary from '../../../hoc/Auxiliary';
+import Backdrop from '../Backdrop/Backdrop';
 
-const modal = (props) => (
-  <Auxiliary>
-  <Backdrop showModal={props.showModal} clicked={props.modalClosed}/>
-    <div
-      style={{
-        transform: props.showModal ? "translateY(0)" : "translateY(-100vh)",
-        opacity: props.showModal ? "1" : "0"
-        }}
-      className={classes.Modal}>
-      {props.children}
-    </div>
-  </Auxiliary>
-);
+class Modal extends Component {
+  shouldComponentUpdate(nextProps, nextState ) {
+    return nextProps.showModal !== this.props.showModal
+  }
+  
+  render() {
+    return (
+      <Auxiliary>
+        <Backdrop
+          showModal={this.props.showModal}
+          clicked={this.props.modalClosed}
+        />
+        <div
+          style={{
+            transform: this.props.showModal
+              ? "translateY(0)"
+              : "translateY(-100vh)",
+            opacity: this.props.showModal ? "1" : "0",
+          }}
+          className={classes.Modal}
+        >
+          {this.props.children}
+        </div>
+      </Auxiliary>
+    );
+  }
+}
 
-export default modal;
+export default Modal;
