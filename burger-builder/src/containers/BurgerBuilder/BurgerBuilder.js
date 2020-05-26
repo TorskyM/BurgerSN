@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
-import Burger from "../../components/Burger/Burger";
-import BuildControls from "../../components/Burger/BuildControls/BuildControls";
-import Modal from "../../components/UI/Modal/Modal";
-import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
-import Spinner from "../../components/UI/Spinner/Spinner";
-import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
+import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
+import Burger from '../../components/Burger/Burger';
+import BuildControls from '../../components/Burger/BuildControls/BuildControls';
+import Modal from '../../components/UI/Modal/Modal';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
+import Spinner from '../../components/UI/Spinner/Spinner';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
-import axios from "../../axios-orders";
+import axios from '../../axios-orders';
 
 const INGREDIENT_PRICES = {
   salad: 0.5,
@@ -29,7 +29,7 @@ class BurgerBuilder extends Component {
 
   componentDidMount() {
     axios
-      .get("https://my-project-1558264604924.firebaseio.com/ingredients.json")
+      .get('https://my-project-1558264604924.firebaseio.com/ingredients.json')
       .then((response) => {
         this.setState({ ingredients: response.data });
       }).catch( _ => this.setState({ error: true }));
@@ -95,20 +95,20 @@ class BurgerBuilder extends Component {
       ingredients: this.state.ingredients,
       price: this.state.totalPrice,
       customer: {
-        name: "UserName",
+        name: 'UserName',
         address: {
-          street: "UserStreet",
-          zipCode: "468494",
+          street: 'UserStreet',
+          zipCode: '468494',
         },
-        email: "test@test.com",
-        deliveryMethod: "fastest",
+        email: 'test@test.com',
+        deliveryMethod: 'fastest',
       },
     };
 
     this.setState({ loading: true });
 
     axios
-      .post("/orders.json", order)
+      .post('/orders.json', order)
       .then((_) => this.setState({ loading: false, purchasing: false }))
       .catch((_) => this.setState({ loading: false, purchasing: false }));
   };
