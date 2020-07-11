@@ -78,7 +78,7 @@ class ContactData extends Component {
   checkValidity = (checkedValue, validationRules) => {
     let isValid = true;
 
-    if (validationRules.required) {
+    if(validationRules.required) {
       isValid = checkedValue.trim() !== '' && isValid;
     }
 
@@ -145,7 +145,7 @@ class ContactData extends Component {
       </form>
     );
 
-    if (this.state.loading) {
+    if(this.state.loading) {
       form = <Spinner />;
     }
 
